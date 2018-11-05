@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     background-color: #2e3f4f;
+    color: white;
 }
 
 .imageMove {
@@ -13,9 +14,9 @@
     padding: 0;
 }
 
-    .navbar a {
-        color: white;
-    }
+.navbar a {
+    color: white;
+}
 
 img {
     max-width: 100%;

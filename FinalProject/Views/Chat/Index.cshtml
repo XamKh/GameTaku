@@ -1,0 +1,31 @@
+﻿@model IEnumerable<FinalProject.Models.ChatMessage>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container body-content">
+    <h2>Chat</h2>
+    <div class="container-fluid">
+        <div class="form-group">
+            <textarea class="form-control" style="min-height:50vh" disabled>
+            @foreach(var chatMessage in Model)
+            {
+                @string.Format("{0} says {1} ", chatMessage.UserName, chatMessage.Message)
+                 @:&#13;&#10;
+            }
+ </textarea>
+            <form method="post">
+                <div class="form-group">
+                    <label for="Message">Message</label>
+                    <input type="text" name="Message" class="form-control" />
+                </div>
+                <input type="submit" />
+            </form>
+        </div>
+    </div>
+    @section scripts{
+        <script type="text/javascript">
+            $(document).ready(() => window.setTimeout(() => window.location.href = window.location.href, 10000));
+        </script>
+    }
+</div>

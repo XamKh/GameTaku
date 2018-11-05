@@ -1,0 +1,105 @@
+﻿@model FinalProject.Models.ProductsViewModel
+@{
+    ViewData["Title"] = "Items";
+}
+@*<section>
+        <div>
+            <img src="~/images/banner.png" alt="banner" style="max-width:100%; height:auto; margin: 2em 0em;" />
+
+        </div>
+
+    </section>*@
+<style>
+    .banner {
+        width: 100%;
+        height: auto;
+        margin: 2em 0em;
+    }
+    .card-body{
+        color:black;
+    }
+
+    .text-center {
+        color: white;
+    }
+    .bannerDiv {
+        background-color: #ec9454;
+    }
+</style>
+<div class="text-center">
+    <h1>Our Products</h1>
+
+    @foreach (var type in Model.ProductTypes)
+    {
+        <a asp-action="index" asp-route-id="@type.Name" class="btn btn-primary text-center">@type.Name</a>
+    }
+</div>
+@foreach (var type in Model.ProductTypes.Where(x => x.Products.Any()))
+{
+    <section>
+        <div class="container-fluid" style="margin:2em 0em; padding:0em;">
+            @if (type.Name == "Game")
+            {
+                <img src="~/images/Gamesbanner.png" alt="@type.Name" class="img-responsive banner" />
+            }
+            else if (type.Name == "Manga")
+            {
+                <img src="~/images/Mangabanner.png" alt="@type.Name" class="img-responsive banner" />
+            }
+            else
+            {
+                <div class="container-fluid bannerDiv"></div>
+                @*<img src="~/images/banner.png" alt="@type.Name" class="img-responsive banner" />*@
+            }
+        </div>
+    </section>
+    <div class="text-center">
+        <h1>@type.Name Genres</h1>
+        @foreach (var genre in type.AvailablesGenres)
+        {
+            <a asp-action="index" asp-route-searchString="@genre" class="btn btn-primary text-center">@genre</a>
+        }
+    </div>
+    <div class="container body-content">
+            <div class="row">
+                @foreach (var product in type.Products)
+                {
+                    <div class="col-lg-4">
+                        <div class="card" style="margin-bottom: 2em;">
+                            <img class="card-img-top" src="@Url.Content(product.ImageUrl)" alt="@product.Name" />
+                            <div class="card-body">
+                                <h5 class="card-title">@product.Name <span style="display:flex; justify-content:flex-end">@((product.Price ?? 0).ToString("c"))</span></h5>
+                                <p class="card-text">@product.Description</p>
+                                <h5>Tags: <span>@product.ProductTypeName</span></h5>
+                            </div>
+                            <div class="videoCenter embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="@product.TrailerUrl" allowfullscreen></iframe>
+                            </div>
+                            @*<iframe width="560" height="315" src="@product.TrailerUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ></iframe>*@
+
+                            <div class="checkOutBtn">
+                                <form method="post" asp-action="Index" asp-controller="Products">
+                                    <input type="hidden" name="id" value="@product.ID" />
+                                    <label for="quantity">How many would you like?</label>
+                                    <select name="quantity" class="form-control">
+                                        @for (int i = 1; i <= 10; i++)
+                                        {
+                                            <option value="@i">@i</option>
+                                        }
+                                    </select>
+                                    <input type="submit" class="btn btn-danger" style="margin: .5em 0em; float:right;" value="Add To Cart" />
+                                    <input type="button" class="btn btn-warning" style="margin: .5em 0em; " value="Learn More" />
+                                </form>
+
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated @product.LastModified</small>
+                            </div>
+                        </div>
+                    </div>
+                }
+                
+            </div>
+        </div>
+        
+    }

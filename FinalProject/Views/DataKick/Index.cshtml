@@ -1,0 +1,33 @@
+﻿@model IEnumerable<FinalProject.Controllers.JikanCharacters>
+@{
+
+}
+<div class="container body-content">
+    <h1>Cool Beans</h1>
+    <div class="card-deck">
+        <div class="row">
+            @foreach (var product in Model)
+            {
+                <div class="col-lg-4">
+                    <div class="card" style="margin-bottom: 2em;">
+                        <img class="card-img-top" src="@Url.Content(product.image_url)" alt="@product.name" />
+                        <div class="card-body">
+                            <h5 class="card-title">@product.name</h5>
+
+                            <h5>Role: <span>@product.role</span></h5>
+                        </div>
+                        @*<iframe width="560" height="315" src="@product.TrailerUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ></iframe>*@
+
+                        <div class="checkOutBtn">
+                            <a href="@product.url" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Learn More</a>
+
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated Today</small>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

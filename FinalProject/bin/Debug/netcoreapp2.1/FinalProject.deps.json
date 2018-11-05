@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "508fee09cb0b1bef4c0f69eb83f783d485056cb7"
+    "signature": "aab89d7c095c3285003eb115abf00578c127183f"
   },
   "compilationOptions": {
     "defines": [
@@ -24,15 +24,80 @@
     ".NETCoreApp,Version=v2.1": {
       "FinalProject/1.0.0": {
         "dependencies": {
+          "Braintree": "4.6.0",
+          "Microsoft.AspNet.SignalR": "2.3.0",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1",
+          "Sendgrid": "9.10.0",
+          "smartystreets-dotnet-sdk": "8.0.14"
         },
         "runtime": {
           "FinalProject.dll": {}
         },
         "compile": {
           "FinalProject.dll": {}
+        }
+      },
+      "Braintree/4.6.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.1.1",
+          "NETStandard.Library": "2.0.3",
+          "Newtonsoft.Json": "11.0.2",
+          "System.Xml.XPath.XmlDocument": "4.0.1"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Braintree.dll": {
+            "assemblyVersion": "4.6.0.0",
+            "fileVersion": "4.6.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.3/Braintree.dll": {}
+        }
+      },
+      "jQuery/1.6.4": {},
+      "Microsoft.AspNet.SignalR/2.3.0": {
+        "dependencies": {
+          "Microsoft.AspNet.SignalR.JS": "2.3.0",
+          "Microsoft.AspNet.SignalR.SystemWeb": "2.3.0"
+        }
+      },
+      "Microsoft.AspNet.SignalR.Core/2.3.0": {
+        "dependencies": {
+          "Microsoft.Owin": "2.1.0",
+          "Microsoft.Owin.Security": "2.1.0",
+          "Newtonsoft.Json": "11.0.2",
+          "Owin": "1.0.0"
+        },
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.SignalR.Core.dll": {
+            "assemblyVersion": "2.3.0.0",
+            "fileVersion": "2.3.10626.1544"
+          }
+        },
+        "compile": {
+          "lib/net45/Microsoft.AspNet.SignalR.Core.dll": {}
+        }
+      },
+      "Microsoft.AspNet.SignalR.JS/2.3.0": {
+        "dependencies": {
+          "jQuery": "1.6.4"
+        }
+      },
+      "Microsoft.AspNet.SignalR.SystemWeb/2.3.0": {
+        "dependencies": {
+          "Microsoft.AspNet.SignalR.Core": "2.3.0",
+          "Microsoft.Owin.Host.SystemWeb": "2.1.0"
+        },
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.SignalR.SystemWeb.dll": {
+            "assemblyVersion": "2.3.0.0",
+            "fileVersion": "2.3.10626.1544"
+          }
+        },
+        "compile": {
+          "lib/net45/Microsoft.AspNet.SignalR.SystemWeb.dll": {}
         }
       },
       "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
@@ -236,6 +301,46 @@
       },
       "Microsoft.NETCore.Platforms/2.1.0": {},
       "Microsoft.NETCore.Targets/2.1.0": {},
+      "Microsoft.Owin/2.1.0": {
+        "dependencies": {
+          "Owin": "1.0.0"
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.30113.529"
+          }
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.dll": {}
+        }
+      },
+      "Microsoft.Owin.Host.SystemWeb/2.1.0": {
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Host.SystemWeb.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.30113.529"
+          }
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Host.SystemWeb.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security/2.1.0": {
+        "dependencies": {
+          "Microsoft.Owin": "2.1.0",
+          "Owin": "1.0.0"
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Security.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.30113.529"
+          }
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Security.dll": {}
+        }
+      },
       "Microsoft.VisualStudio.Web.CodeGeneration/2.1.1": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "2.1.1",
@@ -375,6 +480,43 @@
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
         }
       },
+      "Owin/1.0.0": {
+        "runtime": {
+          "lib/net40/Owin.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/net40/Owin.dll": {}
+        }
+      },
+      "Sendgrid/9.10.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.1.1",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SendGrid.dll": {
+            "assemblyVersion": "9.10.0.0",
+            "fileVersion": "9.10.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/SendGrid.dll": {}
+        }
+      },
+      "smartystreets-dotnet-sdk/8.0.14": {
+        "runtime": {
+          "lib/netstandard2.0/smartystreets-dotnet-sdk.dll": {
+            "assemblyVersion": "8.0.14.0",
+            "fileVersion": "8.0.14.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/smartystreets-dotnet-sdk.dll": {}
+        }
+      },
       "System.Composition/1.0.31": {
         "dependencies": {
           "System.Composition.AttributedModel": "1.0.31",
@@ -510,6 +652,29 @@
           "System.Runtime.Extensions": "4.3.0",
           "System.Threading": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
+        }
+      },
+      "System.Xml.XPath.XmlDocument/4.0.1": {
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Xml.ReaderWriter": "4.3.0",
+          "System.Xml.XPath": "4.3.0",
+          "System.Xml.XmlDocument": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "1.0.24212.1"
+          }
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3463,17 +3628,59 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Braintree/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hIEwceuwtXyrMETAYY9KXzdF2NPpZ4YlOUK9V1BPzlQz6P/ZxENL8k7GKA/lMweGzm4h2qMgbz2wvVmJrA20PA==",
+      "path": "braintree/4.6.0",
+      "hashPath": "braintree.4.6.0.nupkg.sha512"
+    },
+    "jQuery/1.6.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5zE0/7I6UWdLfoQYtZFUQ10dVNlmAp7QWOwI3Zhlz1RG/LM1DtfvW9aFbshMksogcfkyvnxHqOQ07ULXrMI8kw==",
+      "path": "jquery/1.6.4",
+      "hashPath": "jquery.1.6.4.nupkg.sha512"
+    },
+    "Microsoft.AspNet.SignalR/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jQpLfdQnDIV/Ztj03S09UJlv28DZtI4hIKWIZ1ldbTWLF5gWvTYUbypdNkyUzrW3KN1p3vgZUyifhyzHtHjo7Q==",
+      "path": "microsoft.aspnet.signalr/2.3.0",
+      "hashPath": "microsoft.aspnet.signalr.2.3.0.nupkg.sha512"
+    },
+    "Microsoft.AspNet.SignalR.Core/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iOJi6ox/DnduODsggBvdtIxIaRHAkdkKR06v4DJC14KVNLinJZ+1lnnOa2nuPglHyQP6bMFfjrZ4K8MIiBTp0g==",
+      "path": "microsoft.aspnet.signalr.core/2.3.0",
+      "hashPath": "microsoft.aspnet.signalr.core.2.3.0.nupkg.sha512"
+    },
+    "Microsoft.AspNet.SignalR.JS/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2aUdYPHiFGHLVrxvr1fvLViHHt03pZ5no2OfbAiTYARZ1aub1VIdCkJVx9jHZ5ziwOYNa80IJ9e9iXaYOXXK2A==",
+      "path": "microsoft.aspnet.signalr.js/2.3.0",
+      "hashPath": "microsoft.aspnet.signalr.js.2.3.0.nupkg.sha512"
+    },
+    "Microsoft.AspNet.SignalR.SystemWeb/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nQwqiJjG9C/Sqys1PBEQssy3xDXivOPYy4MoTGDpLjXNzRynr3yUbbs9wuQlUduaSWuYT1yEYAt4UmOElzMikw==",
+      "path": "microsoft.aspnet.signalr.systemweb/2.3.0",
+      "hashPath": "microsoft.aspnet.signalr.systemweb.2.3.0.nupkg.sha512"
+    },
     "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hpSNX6kgb13ABbOmxAD2sj/7J7IN3HWz1AWcmEuouTZM+OeWLSHDmPGlN4eaUDPMCoe1DY7v16D3V0BY+q7BTw==",
+      "sha512": "sha512-4JcQJNDSyGXtz9ccBzSBmcPmKg7GiL4LYvtv+YG8C9waNP/xhwuvIycSQOF4a0V+J73JwUopA503O7vb8p5ZUQ==",
       "path": "microsoft.codeanalysis.csharp.workspaces/2.8.0",
       "hashPath": "microsoft.codeanalysis.csharp.workspaces.2.8.0.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.Workspaces.Common/2.8.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xt6VmGncJW14z3O0/k7+0cO8w9tB3O6CUL6sM6LesgGmD6zZPbWKY9KpRgV7RewA1flLuXBaUknRjwj0kLA6/g==",
+      "sha512": "sha512-AqCiNju6UZy9Sd8HKzxGbpbZf+P8gWpojfvs9hIRfwstqFMZ6OJXf69EUvqJ5C4rWrcf08F7G8WII74KBEFImQ==",
       "path": "microsoft.codeanalysis.workspaces.common/2.8.0",
       "hashPath": "microsoft.codeanalysis.workspaces.common.2.8.0.nupkg.sha512"
     },
@@ -3518,6 +3725,27 @@
       "sha512": "sha512-etaYwrLZQUS+b3UWTpCnUggd6SQ/ZIkZ5pHnoR7+dIWt/wp2Rv3CvMKOZISsrt7FYCHKwCxfcepuuyEWkQxADg==",
       "path": "microsoft.netcore.targets/2.1.0",
       "hashPath": "microsoft.netcore.targets.2.1.0.nupkg.sha512"
+    },
+    "Microsoft.Owin/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nBuUV1pzyQmk1pYUIQHS7jFTAzpn8KBi6ZnaOKF9tMtDqwlmq49Liys2bSuyn+XTf3M236nvZmxloV74wfBPxQ==",
+      "path": "microsoft.owin/2.1.0",
+      "hashPath": "microsoft.owin.2.1.0.nupkg.sha512"
+    },
+    "Microsoft.Owin.Host.SystemWeb/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Q6EvrJ32q+lJxlW6HOEYdAg0qyJsCrzgiebpzcPb0ecQiY1UHQhQ2C0Pk+OtK3gyJTQLWdmCJfUskk9mCW9wfg==",
+      "path": "microsoft.owin.host.systemweb/2.1.0",
+      "hashPath": "microsoft.owin.host.systemweb.2.1.0.nupkg.sha512"
+    },
+    "Microsoft.Owin.Security/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cBxD2Th9KQy3I6Y9CH7GRE2FlFywJY99CbVJrSD1BgwmJTE/2FWIS0ely/7F6k60jvVelSxzoN+/i7BX/lTktQ==",
+      "path": "microsoft.owin.security/2.1.0",
+      "hashPath": "microsoft.owin.security.2.1.0.nupkg.sha512"
     },
     "Microsoft.VisualStudio.Web.CodeGeneration/2.1.1": {
       "type": "package",
@@ -3585,9 +3813,30 @@
     "NuGet.Frameworks/4.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/VaEPsEgj3p5YPLLxbYc6rB8gYIPf+8wCWOAlAe3l/SP0DXcefZ58uJer1ToBKIpwbPN5LkgTXtvilze5UJoYQ==",
+      "sha512": "sha512-KuqDbPzjOWbUM6gPMbkvdhlQ10roQAoMM7mNZ8hcY/fH+9J4Zc+qT8dLWoNzGyr0OrxQVdZdbSjy/fxwoICgGg==",
       "path": "nuget.frameworks/4.7.0",
       "hashPath": "nuget.frameworks.4.7.0.nupkg.sha512"
+    },
+    "Owin/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S87+AKxSxfhXRzIQfm6WBxfGbnzECLG8bmVp3lRiwjeYG9YBJ0AXd+2Xn7I7aqwwj0j4erSpX6H9OhXy+qQ7tw==",
+      "path": "owin/1.0.0",
+      "hashPath": "owin.1.0.0.nupkg.sha512"
+    },
+    "Sendgrid/9.10.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-i6208SyPFvZ5bJRUbOimhBF/axjhiS4xQX71+KWPhzWUJGHbGX+yfwPrUg5y0D3deQlQz94mHeWF6AGHSZ81jQ==",
+      "path": "sendgrid/9.10.0",
+      "hashPath": "sendgrid.9.10.0.nupkg.sha512"
+    },
+    "smartystreets-dotnet-sdk/8.0.14": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-H992mlE+kBntZkcs1Sp1VUcEw/JX407aGYS2QnCrhPdvyTVeKemFs1JUEqLGE0Y2UNX6gfAfQiHApoU1yh1ZvA==",
+      "path": "smartystreets-dotnet-sdk/8.0.14",
+      "hashPath": "smartystreets-dotnet-sdk.8.0.14.nupkg.sha512"
     },
     "System.Composition/1.0.31": {
       "type": "package",
@@ -3637,6 +3886,13 @@
       "sha512": "sha512-td7x21K8LalpjTWCzW/nQboQIFbq9i0r+PCyBBCdLWWnm4NBcdN18vpz/G9hCpUaCIfRL+ZxJNVTywlNlB1aLQ==",
       "path": "system.linq.parallel/4.3.0",
       "hashPath": "system.linq.parallel.4.3.0.nupkg.sha512"
+    },
+    "System.Xml.XPath.XmlDocument/4.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Zm2BdeanuncYs3NhCj4c9e1x3EXFzFBVv2wPEc/Dj4ZbI9R8ecLSR5frAsx4zJCPBtKQreQ7Q/KxJEohJZbfzA==",
+      "path": "system.xml.xpath.xmldocument/4.0.1",
+      "hashPath": "system.xml.xpath.xmldocument.4.0.1.nupkg.sha512"
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",

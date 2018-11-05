@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using FinalProject.Data
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+<style>
+    .dropdown-item{
+
+    }
+    .dropdown-menu {
+        background-color: #b54a37;
+    }
+</style>
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
+{
+<ul class="nav navbar-nav">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle two" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Admin Panel
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item two" asp-area="" asp-controller="ProductsAdmin" asp-action="Index">Products Panel</a>
+            <a class="dropdown-item two" asp-area="" asp-controller="Chat" asp-action="Index">Admin Chat</a>
+            <a class="dropdown-item two" asp-area="" asp-controller="Users" asp-action="Index">Manage Users</a>
+            <a class="dropdown-item two" asp-area="" asp-controller="Roles" asp-action="Index">Manage Roles</a>
+        </div>
+    </li>
+</ul>
+}
