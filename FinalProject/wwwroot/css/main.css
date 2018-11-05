@@ -1,0 +1,75 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background-color: #2e3f4f;
+}
+
+.imageMove {
+    margin-top: 1.5em;
+}
+
+.navbar {
+    background-color: transparent;
+    padding: 0;
+}
+
+    .navbar a {
+        color: white;
+    }
+
+img {
+    max-width: 100%;
+    height: auto;
+    width: 100px;
+}
+
+.costum-center {
+    margin: auto;
+}
+
+.navbar-nav li > .one {
+    color: #b54a37;
+    padding-bottom: 3px;
+    border-bottom: 3px solid #b54a37;
+}
+
+.navbar-nav li > .one:hover {
+        color: #ec9454;
+        padding-bottom: 3px;
+        border-bottom: 3px solid #ec9454;
+}
+
+.navbar-nav li > .two:hover {
+    padding-bottom: 3px;
+    border-bottom: 3px solid #ec9454;
+}
+
+.two:hover {
+    color: #ec9454;
+}
+
+.navbar-nav li > .three:hover {
+    padding-bottom: 3px;
+    border-bottom: 3px solid #ec9454;
+}
+
+.three:hover {
+    color: #ec9454;
+}
+
+.navbar-nav li > .four:hover {
+    padding-bottom: 3px;
+    border-bottom: 3px solid #ec9454;
+}
+
+.four:hover {
+    color: #ec9454;
+}
+
+#carouselExampleIndicators {
+    margin: 3em;
+}
+
+.navbar-toggler {
+    background-color: #ec9454;
+}

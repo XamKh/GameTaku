@@ -1,0 +1,17 @@
+body{
+    margin:0;
+    padding:0;
+    background-color:black;
+}
+.navbar{
+    background-color:transparent;
+    padding:0;
+}
+.navbar a{
+    color:#CC0000;
+}
+.logo{
+    max-width: 100%;
+    width: 200px;
+    height: auto;
+}
