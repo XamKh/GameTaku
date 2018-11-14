@@ -8,6 +8,10 @@ using FinalProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using System.Text;
+using Microsoft.Net.Http.Headers;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,10 +21,13 @@ namespace FinalProject.Controllers
     public class ProductsController : Controller
     {
         private ApplicationDbContext _context;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public ProductsController(ApplicationDbContext context)
+
+        public ProductsController(ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         private void PopulateEmptyProducts()
@@ -227,11 +234,26 @@ namespace FinalProject.Controllers
             return RedirectToAction("Index", "Cart");
         }
 
+        public FileResult Download(string name)
+        {
+            var stream = new MemoryStream(Encoding.ASCII.GetBytes($"Thank you for downloading: {name}." +
+                $"{Environment.NewLine}We hope you enjoy it!"));
+            return new FileStreamResult(stream, new MediaTypeHeaderValue("text/plain"))
+            {
+                FileDownloadName = $"{name}.txt"
+            };
+            //var fileName = $"{name}.txt";
+            //var filepath = $"{_hostingEnvironment.WebRootPath}/{fileName}";
+            //byte[] fileBytes = System.IO.File.ReadAllBytes(filepath);
+
+
+        }
+
         public IActionResult Index(string id, string searchString)
         {
             PopulateEmptyProducts();
-
-
+            ViewData["Roles"] =  _context.Roles.ToArrayAsync();
+            //if(_context.UserRoles.)
             ProductsViewModel model = new ProductsViewModel
             {
                 ProductTypes = _context.ProductTypes

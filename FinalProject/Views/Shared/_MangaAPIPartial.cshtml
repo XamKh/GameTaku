@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using FinalProject.Data
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+<style>
+    .dropdown-item {
+    }
+
+    .dropdown-menu {
+        background-color: #b54a37;
+    }
+</style>
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Manga Member") 
+    || SignInManager.IsSignedIn(User) && User.IsInRole("Prime Member")
+    || SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
+{
+    <ul class="nav navbar-nav">
+            <li><a class="nav-link four" asp-area="" asp-controller="DataKick" asp-action="Index">VA/Ch</a></li>
+        </ul>
+}
+  
+

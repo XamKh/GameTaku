@@ -10,20 +10,32 @@
 
     </section>*@
 <style>
+    .btn{
+        margin:1.5em 0.5em;
+    }
     .banner {
         width: 100%;
         height: auto;
         margin: 2em 0em;
     }
-    .card-body{
-        color:black;
+
+    .card-body {
+        color: black;
     }
 
     .text-center {
         color: white;
     }
+
     .bannerDiv {
         background-color: #ec9454;
+    }
+    .card:hover {
+        transform: scale(1.12);
+    }
+
+    .card {
+        transition: transform .6s;
     }
 </style>
 <div class="text-center">
@@ -49,7 +61,7 @@
             else
             {
                 <div class="container-fluid bannerDiv"></div>
-                @*<img src="~/images/banner.png" alt="@type.Name" class="img-responsive banner" />*@
+                <img src="~/images/membershipbanner.png" alt="@type.Name" class="img-responsive banner" />
             }
         </div>
     </section>
@@ -61,24 +73,146 @@
         }
     </div>
     <div class="container body-content">
-            <div class="row">
-                @foreach (var product in type.Products)
-                {
-                    <div class="col-lg-4">
-                        <div class="card" style="margin-bottom: 2em;">
-                            <img class="card-img-top" src="@Url.Content(product.ImageUrl)" alt="@product.Name" />
-                            <div class="card-body">
-                                <h5 class="card-title">@product.Name <span style="display:flex; justify-content:flex-end">@((product.Price ?? 0).ToString("c"))</span></h5>
-                                <p class="card-text">@product.Description</p>
-                                <h5>Tags: <span>@product.ProductTypeName</span></h5>
-                            </div>
-                            <div class="videoCenter embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="@product.TrailerUrl" allowfullscreen></iframe>
-                            </div>
-                            @*<iframe width="560" height="315" src="@product.TrailerUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ></iframe>*@
+        <div class="row">
+            @foreach (var product in type.Products)
+            {
+                <div class="col-lg-4">
+                    <div class="card" style="margin-bottom: 2em;">
+                        <img class="card-img-top" src="@Url.Content(product.ImageUrl)" alt="@product.Name" />
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @product.Name
+                                @if (User.IsInRole("Games Member"))
+                                {
+                                    @if (product.ProductTypeName == "Game")
+                                    {
+                                        <span style="display:flex; justify-content:flex-end">
+                                            Free
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span style="display:flex; justify-content:flex-end">
+                                            @((product.Price ?? 0).ToString("c"))
+                                        </span>
+                                    }
+                                }
+                                else if (User.IsInRole("Manga Member"))
+                                {
 
-                            <div class="checkOutBtn">
-                                <form method="post" asp-action="Index" asp-controller="Products">
+                                    @if (product.ProductTypeName == "Manga")
+                                    {
+                                        <span style="display:flex; justify-content:flex-end">
+                                            Free
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span style="display:flex; justify-content:flex-end">
+                                            @((product.Price ?? 0).ToString("c"))
+                                        </span>
+                                    }
+                                }
+                                else if (User.IsInRole("Prime Member") || User.IsInRole("Administrator"))
+                                {
+
+                                    @if (product.ProductTypeName == "Game" || product.ProductTypeName == "Manga")
+                                    {
+                                        <span style="display:flex; justify-content:flex-end">
+                                            Free
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span style="display:flex; justify-content:flex-end">
+                                            @((product.Price ?? 0).ToString("c"))
+                                        </span>
+                                    }
+
+                                }
+                                else
+                                {
+                                    <span style="display:flex; justify-content:flex-end">
+                                        @((product.Price ?? 0).ToString("c"))
+                                    </span>
+                                }
+                            </h5>
+                            <p class="card-text">@product.Description</p>
+                            <h5>Tags: <span>@product.ProductTypeName</span></h5>
+                        </div>
+                        <div class="videoCenter embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="@product.TrailerUrl" allowfullscreen></iframe>
+                        </div>
+                        @*<iframe width="560" height="315" src="@product.TrailerUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ></iframe>*@
+
+                        <div class="checkOutBtn">
+                            <form method="post" asp-action="Index" asp-controller="Products">
+                                @if (User.IsInRole("Prime") || User.IsInRole("Administrator"))
+                                {
+                                    if (product.ProductTypeName == "Game" || product.ProductTypeName == "Manga")
+                                    {
+
+                                        <a asp-action="Download" asp-route-name="@product.Name" class="btn btn-primary text-center">Download</a>
+                                    }
+                                }
+                                else if (User.IsInRole("Games Member"))
+                                {
+                                    if (product.ProductTypeName == "Game")
+                                    {
+                                        <a asp-action="Download" asp-route-name="@product.Name" class="btn btn-primary text-center">Download</a>
+                                    }
+                                    else if (product.ProductTypeName == "Membership")
+                                    {
+                                        if (product.Name == "Games Membership")
+                                        {
+                                            <h6 style="color:black;">Your @product.Name expires in:</h6>
+                                            <h4 id="countdown" style="color:black;"></h4>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <input type="hidden" name="id" value="@product.ID" />
+                                        <label for="quantity">How many would you like?</label>
+                                        <select name="quantity" class="form-control">
+                                            @for (int i = 1; i <= 10; i++)
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        </select>
+                                        <input type="submit" class="btn btn-danger" style="margin: .5em 0em;" value="Add To Cart" />
+                                    }
+                                }
+                                else if (User.IsInRole("Manga Member"))
+                                {
+                                    if (product.ProductTypeName == "Manga")
+                                    {
+                                        <a asp-action="Download" asp-route-name="@product.Name" class="btn btn-primary text-center">Download</a>
+                                    }
+                                    else if (product.ProductTypeName == "Membership")
+                                    {
+                                        if (product.Name == "Manga Membership")
+                                        {
+                                            <h6 style="color:black;">Your @product.Name expires in:</h6>
+                                            <h4 id="countdown" style="color:black;"></h4>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <input type="hidden" name="id" value="@product.ID" />
+                                        <label for="quantity">How many would you like?</label>
+                                        <select name="quantity" class="form-control">
+                                            @for (int i = 1; i <= 10; i++)
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        </select>
+                                        <input type="submit" class="btn btn-danger" style="margin: .5em 0em;" value="Add To Cart" />
+                                    }
+                                }
+                                else
+                                {
                                     <input type="hidden" name="id" value="@product.ID" />
                                     <label for="quantity">How many would you like?</label>
                                     <select name="quantity" class="form-control">
@@ -87,19 +221,51 @@
                                             <option value="@i">@i</option>
                                         }
                                     </select>
-                                    <input type="submit" class="btn btn-danger" style="margin: .5em 0em; float:right;" value="Add To Cart" />
-                                    <input type="button" class="btn btn-warning" style="margin: .5em 0em; " value="Learn More" />
-                                </form>
+                                    <input type="submit" class="btn btn-danger" style="margin: .5em 0em;" value="Add To Cart" />
+                                }
 
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Last updated @product.LastModified</small>
-                            </div>
+
+                            </form>
+
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated @product.LastModified</small>
                         </div>
                     </div>
-                }
-                
-            </div>
+                </div>
+            }
+
         </div>
-        
-    }
+    </div>
+
+}<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date();
+        countDownDate = countDownDate.setDate(countDownDate.getDate() + 30);
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get todays date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+    document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+      document.getElementById("countdown").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>

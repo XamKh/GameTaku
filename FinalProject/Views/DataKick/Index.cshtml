@@ -2,8 +2,23 @@
 @{
 
 }
+<style>
+    body{
+        color:black;
+    }
+    .card:hover {
+        transform: scale(1.08);
+    }
+
+    .card {
+        transition: transform .6s;
+    }
+</style>
 <div class="container body-content">
-    <h1>Cool Beans</h1>
+    <div class="alert alert-primary" role="alert">
+        <h5>Enjoy The Data of Voice Actors of One Of The Most Famous Anime Characters!</h5>
+    </div>
+   
     <div class="card-deck">
         <div class="row">
             @foreach (var product in Model)
